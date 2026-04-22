@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="mavlink">
+      <UniqueIdentifier>{efc0e3f4-2a25-4b7f-ad21-e0af308a5262}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mavlink\include">
+      <UniqueIdentifier>{c6a49b6d-c7b7-4ac1-8a40-1526685e7a5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mavlink\include\mavlink">
+      <UniqueIdentifier>{28cb8af2-a267-4ef0-9687-acdca1e032f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mavlink\include\mavlink\v2.0">
+      <UniqueIdentifier>{75755747-caa7-4b11-9779-02d99d93f89c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mavlink\include\mavlink\v2.0\ardupilotmega">
+      <UniqueIdentifier>{a83c1255-88fb-41fc-ab7a-5b09e97aecbe}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\ardupilotmega.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_adap_tuning.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_ahrs.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_ahrs2.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_ahrs3.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_airspeed_autocal.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_aoa_ssa.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_ap_adc.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_autopilot_version_request.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_battery2.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_camera_feedback.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_camera_status.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_compassmot_status.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_data16.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_data32.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_data64.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_data96.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_deepstall.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_device_op_read.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_device_op_read_reply.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_device_op_write.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_device_op_write_reply.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_digicam_configure.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_digicam_control.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_ekf_status_report.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_esc_telemetry_1_to_4.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_esc_telemetry_5_to_8.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_esc_telemetry_9_to_12.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_esc_telemetry_13_to_16.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_esc_telemetry_17_to_20.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_esc_telemetry_21_to_24.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_esc_telemetry_25_to_28.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_esc_telemetry_29_to_32.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_fence_fetch_point.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_fence_point.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_gimbal_control.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_gimbal_report.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_gimbal_torque_cmd_report.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_gopro_get_request.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_gopro_get_response.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_gopro_heartbeat.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_gopro_set_request.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_gopro_set_response.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_hwstatus.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_led_control.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_limits_status.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_mag_cal_progress.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_mcu_status.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_meminfo.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_mount_configure.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_mount_control.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_mount_status.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_named_value_string.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_obstacle_distance_3d.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_osd_param_config.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_osd_param_config_reply.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_osd_param_show_config.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_osd_param_show_config_reply.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_pid_tuning.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_radio.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_rally_fetch_point.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_rally_point.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_rangefinder.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_remote_log_block_status.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_remote_log_data_block.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_rpm.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_secure_command.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_secure_command_reply.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_sensor_offsets.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_set_mag_offsets.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_simstate.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_vision_position_delta.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_water_depth.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\mavlink_msg_wind.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\testsuite.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\ardupilotmega\version.h">
+      <Filter>mavlink\include\mavlink\v2.0\ardupilotmega</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\checksum.h">
+      <Filter>mavlink\include</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\mavlink_conversions.h">
+      <Filter>mavlink\include</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\mavlink_get_info.h">
+      <Filter>mavlink\include</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\mavlink_helpers.h">
+      <Filter>mavlink\include</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\mavlink_sha256.h">
+      <Filter>mavlink\include</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\mavlink_types.h">
+      <Filter>mavlink\include</Filter>
+    </ClInclude>
+    <ClInclude Include="mavlink\include\mavlink\v2.0\protocol.h">
+      <Filter>mavlink\include</Filter>
+    </ClInclude>
+    <ClInclude Include="UdpLink.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Common.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocol.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="UdpLink.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
