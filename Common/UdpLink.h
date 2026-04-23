@@ -6,7 +6,6 @@
 #include <thread>
 #include <atomic>
 #include <mutex>
-//#include <sys/types.h>
 #include <windows.h>
 #include <winsock2.h>
 
@@ -16,8 +15,8 @@
 #include <fstream>
 #include <iostream>
 
-#include <fcntl.h>   /* Объявления управления файлами */
-#include <errno.h>   /* Объявления кодов ошибок */
+#include <fcntl.h>   // Объявления управления файлами
+#include <errno.h>   // Объявления кодов ошибок
 #include <sys/stat.h>
 
 #define BUFFER_LENGTH 2041

@@ -1,3 +1,4 @@
+// FiniteStateUAVs - логика управления группой БВС
 #pragma once
 #include "Protocol.h"
 
@@ -16,13 +17,13 @@ public:
     UAVsStateMachine();
 
     bool processEvent(Protocol::CommandData event, uint32_t drone_id = 0);
-    Protocol::CommandData getCurrentState() const { return m_state; }
+    Protocol::CommandData getCurrentState() const { return state; }
 
     // Для группы нужно учитывать состояние всех дронов
     void updateDroneState(uint32_t drone_id, StatesUAVs state);
 
 private:
-    Protocol::CommandData m_state;
+    Protocol::CommandData state;
 
     bool allDronesInState(StatesUAVs state) const;
     bool anyDroneInState(StatesUAVs state) const;

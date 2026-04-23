@@ -1,3 +1,4 @@
+// FiniteStateUAVs - логика управления группой БВС
 #include "Protocol.h"
 
 class state 
