@@ -5,11 +5,12 @@
 enum class StatesUAVs : uint8_t {
     NOT_READY = 0,
     READY = 1,
-    TAKEOFF = 2,           // Взлёт
-    LAND = 3,              // Посадка
+    TAKEOFF = 2,
+    LAND = 3,
     RETURN_TO_BASE = 4,
-    START_MISSION = 5,
-    PAUSE_MISSION = 6,
+    MISSION_RINNING = 5,   // Выполнение миссии
+    PAUSE_MISSION = 6,     // Приостановка группы выполнения миссии -> группово зависание
+    EMERGENCY = 7          // Аварийная ситуация
 };
 
 class UAVsStateMachine {
@@ -29,6 +30,4 @@ private:
     bool anyDroneInState(StatesUAVs state) const;
 };
 
-class ComandProcess {
-
-};
+class ComandProcess {};

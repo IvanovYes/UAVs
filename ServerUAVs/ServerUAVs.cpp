@@ -54,9 +54,9 @@ private:
             {
                 if (data.size() >= sizeof(Protocol::TelemetryPacket)) {
                     auto packet = Protocol::TelemetryPacket::deserialize(data);
-                    m_registry.updateDrone(packet, ip, port);
+                    UAVs.updateUAV(packet, ip, port);
 
-                    std::cout << "[Telemetry] Drone " << packet.drone_id
+                    std::cout << "[Telemetry] Drone " << packet.uav_id
                         << " | pos: (" << packet.latitude << ", " << packet.longitude
                         << ", " << packet.altitude << ") | batt: "
                         << (int)packet.battery_percent << "%" << std::endl;
@@ -69,10 +69,10 @@ private:
             auto commands = processor.process(centerLat, centerLon);
 
             for (const auto& cmd : commands) {
-                auto drone = registry.getDrone(cmd.target_drone_id);
-                if (drone.is_connected) {
+                auto uav = registry.getUAV(cmd.target_drone_id);
+                if (uav.is_connected) {
                     auto data = cmd.serialize();
-                    commandTX.send(data, drone.ip_address, drone.port);
+                    commandTX.send(data, drone.ip_address, uav.port);
 
                 }
             }
@@ -94,10 +94,10 @@ private:
     double centerLon;
 };
 
-volatile sig_atomic_t g_running = 1;
+volatile sig_atomic_t running = 1;
 
 void signalHandler(int) {
-    g_running = 0;
+    running = 0;
 }
 
 int main() {
@@ -108,7 +108,7 @@ int main() {
         server.start();
 
 
-        while (g_running)
+        while (running)
         {
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
