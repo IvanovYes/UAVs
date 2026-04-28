@@ -10,7 +10,6 @@ enum class StatesUAVs : uint8_t {
     RETURN_TO_BASE = 4,
     MISSION_RINNING = 5,   // Выполнение миссии
     PAUSE_MISSION = 6,     // Приостановка группы выполнения миссии -> группово зависание
-    EMERGENCY = 7          // Аварийная ситуация
 };
 
 class UAVsStateMachine {
