@@ -16,7 +16,7 @@ class UAVsStateMachine {
 public:
     UAVsStateMachine();
 
-    bool processEvent(Protocol::CommandData event, uint32_t drone_id = 0);
+    bool processEvent(Protocol::CommandData Event, uint32_t drone_id{0});
     Protocol::CommandData getCurrentState() const { return state; }
 
     // Для группы нужно учитывать состояние всех дронов

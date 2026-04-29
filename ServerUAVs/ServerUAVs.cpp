@@ -9,7 +9,7 @@
 
 class ServerUAVs {
 public:
-    ServerUAVs(const std::string& serverIP, int listenPort) : processorUAVs(UAVs), running(false), centerLat(55.123), centerlon(37.456)
+    ServerUAVs(const std::string& serverIP, int listenPort) : processorUAVs(UAVs), isRunning(false), centerLat(55.123), centerlon(37.456)
     {
             if (!telemetryRX.bind(listenPort)) {
                 throw std::runtime_error("Failed to bind listen port");
@@ -24,7 +24,7 @@ public:
     void start()
     {
         std::cout << "[Server] Starting..." << std::endl;
-        running = true;
+        isRunning = true;
 
         receiveThread = std::thread(&ServerUAVs::telemetryReceiverLoop, this);
 
@@ -34,7 +34,7 @@ public:
     void stop()
     {
         std::cout << "[Server] Stopping..." << std::endl;
-        running = false;
+        isRunning = false;
 
         if (receiveThread.joinable()) receiveThread.join();
         if (commandThread.joinable()) commandThread.join();
@@ -65,7 +65,7 @@ private:
     }
     void commandProcessorLoop()       // поток непрерывного анализа и отправки команд
     {
-        while (running) {
+        while (isRunning) {
             auto commands = processor.process(centerLat, centerLon);
 
             for (const auto& cmd : commands) {
@@ -94,21 +94,20 @@ private:
     double centerLon;
 };
 
-volatile sig_atomic_t running = 1;
+volatile sig_atomic_t globalRunning{ 1 };
 
 void signalHandler(int) {
-    running = 0;
+    globalRunning = 0;
 }
 
 int main() {
     signal(SIGINT, signalHandler);
 
     try {
-        ServerUAVs server(8888, 8889);
+        ServerUAVs server(127.0.01, 8888);
         server.start();
 
-
-        while (running)
+        while (globalRunning)
         {
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
