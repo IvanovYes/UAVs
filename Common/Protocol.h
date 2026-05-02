@@ -10,13 +10,11 @@ enum class CommandType : uint8_t {
     NONE = 0,
     TAKEOFF = 1,
     LAND = 2,
-    GOTO = 3,
-    EMERGENCY_STOP = 5,
-    RETURN_TO_BASE = 6,
-    CHANGE_MISSION = 7,
-    START_MISSION = 8,
-    PAUSE_MISSION = 9,
-    CHECK_ÑONNECT_AND_CONDITION = 10
+    START_MISSION = 3,
+    PAUSE_MISSION = 4,
+    RETURN_TO_BASE = 5,
+    CHANGE_MISSION = 6,
+    CHECK_ÑONNECT_AND_CONDITION = 7
 };
 
 #pragma pack(push, 1)

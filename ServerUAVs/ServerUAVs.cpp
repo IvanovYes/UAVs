@@ -12,7 +12,7 @@ public:
     ServerUAVs(const std::string& serverIP, int listenPort) : processorUAVs(UAVs), isRunning(false), centerLat(55.123), centerlon(37.456)
     {
             if (!telemetryRX.bind(listenPort)) {
-                throw std::runtime_error("Failed to bind listen port");
+                throw std::runtime_error("Провал в подключении к порту");
             }
     }
 
@@ -23,23 +23,23 @@ public:
 
     void start()
     {
-        std::cout << "[Server] Starting..." << std::endl;
+        std::cout << "[Сервер] Запуск..." << std::endl;
         isRunning = true;
 
         receiveThread = std::thread(&ServerUAVs::telemetryReceiverLoop, this);
 
-        std::cout << "[Server] Running on listening" << std::endl;
+        std::cout << "[Сервер] Ожидание..." << std::endl;
     }
 
     void stop()
     {
-        std::cout << "[Server] Stopping..." << std::endl;
+        std::cout << "[Сервер] Завершение..." << std::endl;
         isRunning = false;
 
         if (receiveThread.joinable()) receiveThread.join();
         if (commandThread.joinable()) commandThread.join();
 
-        std::cout << "[Server] Stopped" << std::endl;
+        std::cout << "[Сервер] Остановлен" << std::endl;
     }
 
     void setFormationCenter(double lat, double lon);
@@ -56,7 +56,7 @@ private:
                     auto packet = Protocol::TelemetryPacket::deserialize(data);
                     UAVs.updateUAV(packet, ip, port);
 
-                    std::cout << "[Telemetry] Drone " << packet.uav_id
+                    std::cout << "[Телеметрия] БВС " << packet.uav_id
                         << " | pos: (" << packet.latitude << ", " << packet.longitude
                         << ", " << packet.altitude << ") | batt: "
                         << (int)packet.battery_percent << "%" << std::endl;
@@ -115,9 +115,8 @@ int main() {
         server.stop();
     }
     catch (const std::exception& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
+        std::cerr << "Ошибка: " << e.what() << std::endl;
         return 1;
     }
-
     return 0;
 }

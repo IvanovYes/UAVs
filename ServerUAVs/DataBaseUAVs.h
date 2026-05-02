@@ -6,21 +6,23 @@
 #include <vector>
 #include <chrono>
 
+struct DataUAV {
+    bool isConnected;
+    std::string ip_address;
+    uint16_t port;
+
+    DataUAV() : isConnected(false), port(0) {}
+};
+
+
 class DataUAVs {
 public:
-    struct DataUAV {
-        bool is_connected;
-        std::string ip_address;
-        uint16_t port;
-
-        DataUAV() : is_connected(false), port(0) {}
-    };
-
+    
     void updateUAV(const std::string& ip, uint16_t port);
 
     DataUAV getUAV(uint32_t id) const;
     std::vector<uint32_t> getAllActiveUAVs() const;
-    void removeStaleUAVS(int timeout_seconds = 10);
+    void removeStateUAVS(int timeout_seconds = 10);
 
     size_t getActiveCount() const;
 

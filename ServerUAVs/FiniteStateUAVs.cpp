@@ -2,18 +2,105 @@
 #include "Protocol.h"
 #include "FiniteStateUAVs.h"
 
-void FiniteStateUAVs::processEvent(Protocol::CommandType& action) {
-	Protocol::CommandType action;
+void UAVsStateMachine::changeSate(State* _state) 
+{
+	std::cout << "Context: Transition to " << typeid(*state).name() << ".\n";
+	if (this->state != nullptr)
+		delete this->state;
+	this->state = _state;
+	this->state->setContext(this);
+}
+
+void UAVsStateMachine::processEvent(Protocol::CommandType& action) {
+	//Protocol::CommandType action;
+	state.check—onnectCondition(action);
 	switch (action)
 	{
-		case Protocol::CommandType::
+	case Protocol::CommandType::TAKE0FF:
+		UAVsStateMachine::state.takeOFF();
+		break;
+	case Protocol::CommandType::LAND:
+		UAVsStateMachine::state.land();
+		break;
+	case Protocol::CommandType::START_MISSION:
+		UAVsStateMachine::state.startMssion();
+		break;
+	case Protocol::CommandType::PAUSE_MISSION:
+		UAVsStateMachine::state.pauseMision();
+		break;
+	case Protocol::CommandType::RETURN_TO_BASE:
+		UAVsStateMachine::returnToBase();
+		break;
+	case Protocol::CommandType::CHANGE_MISSION:
+		UAVsStateMachine::changeMission();
+		break;
+	case default;
+		break;
 	}
-	var fsm_input = FSM_Meta.FSM_Input.new(actions, is_on_floor())
-	var new_state_id = state. 
-	if new_state_id != FSM_Meta.FSM_States.None:
-		var new_state = get_new_state(new_state_id)
-		state.exit()
-		state = new_state
-		state.enter()
-	state.update(fsm_input, delta)
 }
+
+class NOT_READY : public State {
+public:
+    void takeOFF() override
+    {
+        std::cout << "ConcreteStateA handles request2.\n";
+    }
+    void land() override
+    {
+        std::cout << "ConcreteStateA handles request2.\n";
+    }
+    void startMission() override
+    {
+        std::cout << "ConcreteStateA handles request2.\n";
+    }
+    void pauseMission() override
+    {
+        std::cout << "ConcreteStateA handles request2.\n";
+    }
+    void changeMission() override
+    {
+        std::cout << "ConcreteStateA handles request2.\n";
+    }
+    void returnToBase() override
+    {
+        std::cout << "ConcreteStateA handles request2.\n";
+    }
+    void checkConnectCondition() override
+    {
+        ;
+    }
+};
+
+class READY : public State {
+public:
+    void takeOFF() override
+    {
+        std::cout << "ConcreteStateA handles request2.\n";
+    }
+    void land() override
+    {
+        std::cout << "ConcreteStateA handles request2.\n";
+    }
+    void startMission() override
+    {
+        std::cout << "ConcreteStateA handles request2.\n";
+    }
+    void pauseMission() override
+    {
+        std::cout << "ConcreteStateA handles request2.\n";
+    }
+    void changeMission() override
+    {
+        std::cout << "ConcreteStateA handles request2.\n";
+    }
+    void returnToBase() override
+    {
+        std::cout << "ConcreteStateA handles request2.\n";
+    }
+    void checkConnectCondition() override
+    {
+        std::cout << "ConcreteStateA handles request2.\n";
+
+    }
+};
+
