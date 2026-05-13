@@ -74,12 +74,12 @@ ServerUDP::~ServerUDP() {
 }
 
 bool ServerUDP::bind(int port) {
-    memset(&m_local_addr, 0, sizeof(m_local_addr));
+    memset(&local_addr, 0, sizeof(local_addr));
     m_local_addr.sin_family = AF_INET;
     m_local_addr.sin_addr.s_addr = INADDR_ANY;
     m_local_addr.sin_port = htons(port);
 
-    if (::bind(m_socket_fd, (struct sockaddr*)&m_local_addr, sizeof(m_local_addr)) < 0) {
+    if (::bind(socket_fd, (struct sockaddr*)&local_addr, sizeof(local_addr)) < 0) {
         std::cerr << "Bind failed on port " << port << std::endl;
         return false;
     }
@@ -111,7 +111,7 @@ void ServerUDP::receiveLoop() {
 
         struct timeval timeout;
         timeout.tv_sec = 0;
-        timeout.tv_usec = 100000;  // 100ms таймаут для проверки m_running
+        timeout.tv_usec = 100000;  // 100ms таймаут для проверки running
 
         int ret = select(socket + 1, &read_set, nullptr, nullptr, &timeout);
         if (ret < 0) break;
@@ -131,14 +131,14 @@ void ServerUDP::receiveLoop() {
     }
 }
 
-bool UDPManager::send(const std::vector<uint8_t>& data, const std::string& ip, uint16_t port) {
+bool ServerUDP::send(const std::vector<uint8_t>& data, const std::string& ip, uint16_t port) {
     struct sockaddr_in addr;
     memset(&addr, 0, sizeof(addr));
     addr.sin_family = AF_INET;
     addr.sin_port = htons(port);
     inet_pton(AF_INET, ip.c_str(), &addr.sin_addr);
 
-    ssize_t sent = sendto(m_socket_fd, data.data(), data.size(), 0,
+    ssize_t sent = sendto(socket_fd, data.data(), data.size(), 0,
         (struct sockaddr*)&addr, sizeof(addr));
     return sent == (ssize_t)data.size();
 }

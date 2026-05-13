@@ -59,6 +59,6 @@ private:
         uint16_t port;
         std::chrono::system_clock::time_point last_seen;
     };
-    std::unordered_map<uint32_t, ClientInfo> m_clients;
-    std::mutex m_clients_mutex;
+    std::unordered_map<uint32_t, ClientInfo> clients;
+    std::mutex clients_mutex;
 };

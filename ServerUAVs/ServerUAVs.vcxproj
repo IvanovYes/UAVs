@@ -130,7 +130,6 @@
   <ItemGroup>
     <ClCompile Include="DataBaseUAVs.cpp" />
     <ClCompile Include="FiniteStateUAVs.cpp" />
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="ServerUAVs.cpp" />
   </ItemGroup>
   <ItemGroup>
