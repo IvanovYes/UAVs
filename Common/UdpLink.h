@@ -49,7 +49,9 @@ private:
     void receiveLoop();
 
     int socket;
-    struct sockaddr_in locAddr;
+    struct sockaddr_in loc_addr;
+    struct sockaddr_in client_addr;
+    std::vector<uint8_t> buffer(65536);
     std::atomic<bool> running;
     std::thread receiveThread;
     PacketCallback callback;

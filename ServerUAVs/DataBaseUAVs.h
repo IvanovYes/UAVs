@@ -10,7 +10,6 @@ struct DataUAV {
     bool isConnected;
     std::string ip_address;
     uint16_t port;
-
     DataUAV() : isConnected(false), port(0) {}
 };
 
@@ -22,7 +21,7 @@ public:
 
     DataUAV getUAV(uint32_t id) const;
     std::vector<uint32_t> getAllActiveUAVs() const;
-    void removeStateUAVS(int timeout_seconds = 10);
+    //void removeStateUAVS(int timeout_seconds = 10);
 
     size_t getActiveCount() const;
 

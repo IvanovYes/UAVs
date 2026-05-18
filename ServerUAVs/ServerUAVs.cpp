@@ -11,7 +11,7 @@ class ServerUAVs {
 public:
     ServerUAVs(const std::string& serverIP, int listenPort) : processorUAVs(UAVs), isRunning(false), centerLat(55.123), centerlon(37.456)
     {
-            if (!telemetryRX.bind(listenPort)) {
+            if (!connections.bind(listenPort)) {
                 throw std::runtime_error("Провал в подключении к порту");
             }
     }
@@ -25,10 +25,27 @@ public:
     {
         std::cout << "[Сервер] Запуск..." << std::endl;
         isRunning = true;
+        
+        connections.setCallback([this](const std::vector<uint8_t>& data, const std::string& ip, uint16_t port)
+            {
+                if (data.size() >= sizeof(Protocol::TelemetryPacket)) {
+                    auto packet = Protocol::TelemetryPacket::deserialize(data);
+                    UAVs.updateUAV(packet, ip, port);
+
+                    std::cout << "[Телеметрия] БВС " << packet.uav_id
+                        << " | pos: (" << packet.latitude << ", " << packet.longitude
+                        << ", " << packet.altitude << ") | batt: "
+                        << (int)packet.battery_percent << "%" << std::endl;
+                }
+            });
 
         receiveThread = std::thread(&ServerUAVs::telemetryReceiverLoop, this);
 
-        std::cout << "[Сервер] Ожидание..." << std::endl;
+        commandThread = std::thread([this]() {
+            processCommands();
+            });
+
+        //std::cout << "[Сервер] Ожидание..." << std::endl;
     }
 
     void stop()
@@ -50,19 +67,11 @@ public:
 private:
     void telemetryReceiverLoop()      // поток непрервного приёма телеметрии
     {
-        telemetryRX.startReceiving([this](const std::vector<uint8_t>& data, const std::string& ip, uint16_t port)
-            {
-                if (data.size() >= sizeof(Protocol::TelemetryPacket)) {
-                    auto packet = Protocol::TelemetryPacket::deserialize(data);
-                    UAVs.updateUAV(packet, ip, port);
-
-                    std::cout << "[Телеметрия] БВС " << packet.uav_id
-                        << " | pos: (" << packet.latitude << ", " << packet.longitude
-                        << ", " << packet.altitude << ") | batt: "
-                        << (int)packet.battery_percent << "%" << std::endl;
-                }
-            });
+        while (isRunning) {
+            connections.recieveLoop();
+        }
     }
+
     void commandProcessorLoop()       // поток непрерывного анализа и отправки команд
     {
         while (isRunning) {
@@ -70,19 +79,17 @@ private:
 
             for (const auto& cmd : commands) {
                 auto uav = registry.getUAV(cmd.target_drone_id);
-                if (uav.is_connected) {
+                if (uav.isConnected) {
                     auto data = cmd.serialize();
-                    commandTX.send(data, drone.ip_address, uav.port);
-
+                    connections.send(data, drone.ip_address, uav.port);
                 }
             }
-
             std::this_thread::sleep_for(std::chrono::milliseconds(500));
         }
     }
 
-    UdpLink telemetryRX;            // приём данных
-    UdpLink commandTX;              // отправка команд
+    UdpLink connections;            // приём данных
+    // UdpLink commandTX;              // отправка команд
     DataUAVs UAVs;                  // конфигурационная БД об клиентах БВС
     UAVsStateMachine processorUAVs; // автомат конечных состояний сервера
 

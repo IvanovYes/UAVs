@@ -3,7 +3,7 @@
 #include <winsock2.h>
 #include <iostream>
 #include <cstring>
-
+/*
 void sock_send(uint8_t msg_buf[BUFFER_LENGTH], int msg_length, sockaddr_in adress, int msg_socket)
 {
 	memset(msg_buf, 0, BUFFER_LENGTH);
@@ -27,7 +27,7 @@ int sock_init(int& sock, struct sockaddr_in gcAddr, struct sockaddr_in locAddr, 
 	locAddr.sin_addr.s_addr = INADDR_ANY;
 	locAddr.sin_port = htons(14551);
 
-	/* Bind the socket to port 14551 - necessary to receive packets MAVProxy */
+	// Bind the socket to port 14551 - necessary to receive packets MAVProxy
 	if (-1 == bind(sock, (struct sockaddr*)&locAddr, sizeof(struct sockaddr)))
 	{
 		perror("LOC: error bind failed");
@@ -35,7 +35,7 @@ int sock_init(int& sock, struct sockaddr_in gcAddr, struct sockaddr_in locAddr, 
 		exit(EXIT_FAILURE);
 	}
 
-	/* Attempt to make it non blocking */
+	// Attempt to make it non blocking
 	if (fcntl(sock, F_SETFL, O_NONBLOCK | FASYNC) < 0)
 	{
 		fprintf(stderr, "error setting nonblocking: %s\n", strerror(errno));
@@ -48,22 +48,24 @@ int sock_init(int& sock, struct sockaddr_in gcAddr, struct sockaddr_in locAddr, 
 	gcAddr.sin_addr.s_addr = inet_addr(target_ip);
 	gcAddr.sin_port = htons(14550);
 }
-
+*/
 ServerUDP::ServerUDP() : socket(-1), running(false) {
     WSADATA wsaData;
     int result = WSAStartup(MAKEWORD(2, 2), &wsaData);
     if (result != 0) {
-        std::cout << "WSAStartup failed: " << result << std::endl;
+        std::cout << "WSAStartup провален: " << result << std::endl;
         return 1;
     }
     socket = socket(AF_INET, SOCK_DGRAM, 0);
     if (socket < 0) {
-        throw std::runtime_error("Failed to create socket");
+        throw std::runtime_error("Ошибка при создании сокета");
     }
-
     // Разрешаем переиспользование адреса
     int opt = 1;
     setsockopt(socket, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
+
+    buffer(65536);
+    addr_len = sizeof(client_addr);
 }
 
 ServerUDP::~ServerUDP() {
@@ -80,42 +82,28 @@ bool ServerUDP::bind(int port) {
     m_local_addr.sin_port = htons(port);
 
     if (::bind(socket_fd, (struct sockaddr*)&local_addr, sizeof(local_addr)) < 0) {
-        std::cerr << "Bind failed on port " << port << std::endl;
+        std::cerr << "Ошибка при привязки к порту " << port << std::endl;
         return false;
     }
     return true;
 }
 
-void ServerUDP::startReceiving(PacketCallback _callback) {
+void ServerUDP::setCallback(PacketCallback _callback) {
     callback = _callback;
-    running = true;
-    receiveThread = std::thread(&ServerUDP::receiveLoop, this);
-}
-
-void ServerUDP::stopReceiving() {
-    running = false;
-    if (receiveThread.joinable()) {
-        receiveThread.join();
-    }
+    //running = true;
 }
 
 void ServerUDP::receiveLoop() {
-    std::vector<uint8_t> buffer(65536);
-    struct sockaddr_in client_addr;
-    socklen_t addr_len = sizeof(client_addr);
+    fd_set read_set;
+    FD_ZERO(&read_set);
+    FD_SET(socket, &read_set);
 
-    while (running) {
-        fd_set read_set;
-        FD_ZERO(&read_set);
-        FD_SET(socket, &read_set);
-
-        struct timeval timeout;
+    struct timeval timeout;
         timeout.tv_sec = 0;
         timeout.tv_usec = 100000;  // 100ms таймаут для проверки running
 
         int ret = select(socket + 1, &read_set, nullptr, nullptr, &timeout);
-        if (ret < 0) break;
-        if (ret == 0) continue;  // Таймаут
+        if (ret <= 0) continue;  // Таймаут
 
         int n = recvfrom(socket, buffer.data(), buffer.size(), 0,
             (struct sockaddr*)&client_addr, &addr_len);
@@ -128,7 +116,6 @@ void ServerUDP::receiveLoop() {
                 callback(buffer, ip, port);
             }
         }
-    }
 }
 
 bool ServerUDP::send(const std::vector<uint8_t>& data, const std::string& ip, uint16_t port) {
