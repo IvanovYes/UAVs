@@ -11,12 +11,13 @@ void UAVsStateMachine::changeSate(State* _state)
 	this->state->setContext(this);
 }
 
-void UAVsStateMachine::processEvent(Protocol::CommandType& action) {
+void UAVsStateMachine::processEvent(Protocol::CommandType& action) 
+{
 	//Protocol::CommandType action;
 	state.check—onnectCondition(action);
 	switch (action)
 	{
-	case Protocol::CommandType::TAKE0FF:
+	case Protocol::CommandType::TAKEOFF:
 		UAVsStateMachine::state.takeOFF();
 		break;
 	case Protocol::CommandType::LAND:
